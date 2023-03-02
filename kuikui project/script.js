@@ -25,6 +25,7 @@ function getallday() {
   const firstday = new Date(year, month, 1);
   const lastday = new Date(year, month + 1, 0);
   const prevLastday = new Date(year, month, 0);
+  console.log(prevLastday, lastday)
   const prevday = prevLastday.getDate()
   const lastdate = lastday.getDate()
   const day = firstday.getDay()
@@ -35,7 +36,7 @@ function getallday() {
   // header month and year
   allday.innerHTML = ""
   date.innerHTML = months[month] + " " + year;
-  console.log(date)
+  console.log(month)
 
   // prev month to find day
   for (let i = day; i > 0; i--) {
@@ -184,6 +185,7 @@ function addListner() {
       updateevent(Number(e.target.innerHTML))
       //remove active
       days.forEach((day) => {
+        console.log(day)
         day.classList.remove("active");
       });
       //if clicked prev-date or next-date loop next or prev month
@@ -291,4 +293,8 @@ function addeventtoboard() {
   }
   updateevent(activityDay)
 
+}
+
+function gologout() {
+  window.location.href = 'homepage.html'
 }

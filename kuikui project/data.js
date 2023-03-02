@@ -253,4 +253,3 @@ const typemovie = JSON.parse(`[
     }
 ]`);
 
-export {databook, datamovie, datamusic, typebook, typemusic, typemovie}

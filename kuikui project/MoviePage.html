@@ -17,8 +17,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script type = "module" src="app.js"></script>
     <title>Document</title>
 </head>
 
@@ -36,15 +34,15 @@
             <div class="navbar-menu">
                 <!-- name in navbar -->
                 <div class="navbar-start">
-                    <a class="navbar-item is-spaced quotes">
+                    <a class="navbar-item is-spaced quotes" href="MoviePage.html">
                         Home
                     </a>
-                    <a class="navbar-item is-spaced quotes">
+                    <a class="navbar-item is-spaced quotes" href="Catagories-movie.html">
                         Catagories
                     </a>
                 </div>
                 <div class="navbar-end">
-                    <a class="navbar-item">
+                    <a class="navbar-item" href="Profile.html">
                         <img src="resources/person (1).png" alt="">
                     </a>
                 </div>
@@ -74,19 +72,19 @@
         <div class="container my-5">
             <p class="has-text-centered is-size-4 m-4 quotes">Recommended Movies For You</p>
             <div class="columns has-text-centered m-4">
-                <div v-for="item in count" class="column is-one-fifth">
+                <div v-for="item in datamovie" class="column is-one-fifth" v-if="item.id <= 5">
                     <!--list book per each-->
                     <div class="card">
                         <div class="card-image">
                             <figure class="image is-square">
-                                <img class="px-4" src="/resources/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_.jpg">
+                                <img class="px-4" :src="item.imagelink">
                             </figure>
                         </div>
 
                         <div class="card-content">
                             <div class="content has-text-left">
-                                <p class="title is-5 headertext">Name</p>
-                                <p>Director</p>
+                                <p class="title is-5 headertext">{{item.moviename}}</p>
+                                <p>{{item.director}}</p>
                                 <span class="icon">
                                     <i class="fa-solid fa-star has-text-warning"></i>
                                 </span>
@@ -105,92 +103,82 @@
                     <div>
                         <img style="width: 256px; height: 256px;" src="/resources/lagom-popcorn-and-3d-glasses-for-watching-movies.png">
                     </div>
-                    <a class="button is-rounded">Chatroom</a>
+                    <a class="button is-rounded" href="movieChat.html">Chatroom</a>
                 </div>
                 <!--calendar-->
-                <div class="column is-three-quarters">
+                <div class="column is-two-quarters">
                     <div class="calendar is-flex-direction-column is-justify-content-space-between">
                         <div class="month is-flex is-align-items-center	is-justify-content-space-between">
-                            <i class="fa fa-angle-left prev"></i>
-                            <div class="quotes has-text-black my-2">february 2023</div>
-                            <i class="fa fa-angle-right next"></i>
+                            <i class="fa fa-angle-left prev" onclick="prevdaymonth()"></i>
+                            <div id="datebook" class="date quotes has-text-black my-2"></div>
+                            <i class="fa fa-angle-right next" onclick="nextdaymonth()"></i>
                         </div>
 
-                        <table class="headertext table" style="width: 98%;">
-                            <thead>
-                                <tr class="has-text-centered weekdays">
-                                    <th class="has-text-centered">Sun</th>
-                                    <th class="has-text-centered">Mon</th>
-                                    <th class="has-text-centered">Tue</th>
-                                    <th class="has-text-centered">Wed</th>
-                                    <th class="has-text-centered">Thu</th>
-                                    <th class="has-text-centered">Fri</th>
-                                    <th class="has-text-centered">Sat</th>
-                                </tr>
-                            </thead>
+                        <div>
+                            <table class="headertext table" style="width: 98%;">
+                                <thead>
+                                    <tr class="has-text-centered weekdays">
+                                        <th class="has-text-centered">Sun</th>
+                                        <th class="has-text-centered">Mon</th>
+                                        <th class="has-text-centered">Tue</th>
+                                        <th class="has-text-centered">Wed</th>
+                                        <th class="has-text-centered">Thu</th>
+                                        <th class="has-text-centered">Fri</th>
+                                        <th class="has-text-centered">Sat</th>
+                                    </tr>
+                                </thead>
 
-                            <tbody>
-                                <tr class="days has-text-centered">
-                                    <td class="day prev-date">29</td>
-                                    <td class="day prev-date">30</td>
-                                    <td class="day prev-date">31</td>
-                                    <td class="day">1</td>
-                                    <td class="day">2</td>
-                                    <td class="day">3</td>
-                                    <td class="day">4</td>
-                                </tr>
-                                <tr class="days has-text-centered">
-                                    <td class="day">5</td>
-                                    <td class="day">6</td>
-                                    <td class="day">7</td>
-                                    <td class="day">8</td>
-                                    <td class="day">9</td>
-                                    <td class="day">10</td>
-                                    <td class="day">11</td>
-                                </tr>
-                                <tr class="days has-text-centered">
-                                    <td class="day">12</td>
-                                    <td class="day">13</td>
-                                    <td class="day">14</td>
-                                    <td class="day">15</td>
-                                    <td class="day">16</td>
-                                    <td class="day">17</td>
-                                    <td class="day">18</td>
-                                </tr>
-                                <tr class="days has-text-centered">
-                                    <td class="day">19</td>
-                                    <td class="day">20</td>
-                                    <td class="day">21</td>
-                                    <td class="day">22</td>
-                                    <td class="day">23</td>
-                                    <td class="day">24</td>
-                                    <td class="day">25</td>
-                                </tr>
-                                <tr class="days has-text-centered">
-                                    <td class="day">26</td>
-                                    <td class="day">27</td>
-                                    <td class="day">28</td>
-                                    <td class="day next-date">1</td>
-                                    <td class="day next-date">2</td>
-                                    <td class="day next-date">3</td>
-                                    <td class="day next-date">4</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                <tbody class="numberday" id="daybook">
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="is-flex is-justify-content-center is-align-items-center">
+
+                            <input type="date" class="input input-date" style="width: 30%;">
+                            <button class="button" onclick="godayselect(0)">Go</button>
+
+                            <button class="button m-3 todaybtn" onclick="gototoday()">Today</button>
+                        </div>
+                    </div>
+                </div>
+                <!--event-->
+                <div class="column">
+                    <div class="today-date has-text-centered">
+                        <div class="event-day quotes title">Wed</div>
+                        <div class="event-date headertext subtitle is-size-5">16 November 2022</div>
+                    </div>
+                    <div class="events is-flex-direction-column" id="eventbook">
+                    </div>
+                    <div class="add-event" style="bottom: 0;">
+                        <button class="button is-warning modal-button add-event" data-target="#modal"
+                            onclick="addeventfav()">+</button>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div id="modal" class="modal">
+        <div class="modal-background"></div>
 
-    <!--vue-->
-    <!--<script>
-        var app = new Vue({
-            el: '#app'
-        })
-    </script>-->
+        <div class="modal-content">
+            <div class="box">
+                <p class="quotes">Events</p>
+                <div class="py-3">
+                    <input class="input event-name" type="text" placeholder="name event">
+                </div>
+                <div class="py-3 is-align-self-center">
+                    <button class="button add-event-btn" onclick="addeventtoboard()">addevent</button>
+                </div>
+            </div>
+        </div>
 
+        <button class="modal-close is-large" aria-label="close" onclick="closeModal()"></button>
+    </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="app.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

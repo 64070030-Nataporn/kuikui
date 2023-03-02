@@ -23,7 +23,7 @@
 </head>
 
 <body>
-    <div id='app'>
+    <div id="app">
         <!--navbar-->
         <nav class="navbar is-warning" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
@@ -75,7 +75,7 @@
         <div class="container my-5">
             <p class="has-text-centered is-size-4 m-4 quotes">Recommended Books For You</p>
             <div class="columns has-text-centered m-4">
-                <div v-for="item in showbook" class="column is-one-fifth" v-if="item.id <= 5">
+                <div v-for="item in databook" class="column is-one-fifth" v-if="item.id <= 5">
                     <!--list book per each-->
                     <div class="card">
                         <div class="card-image">
@@ -88,12 +88,9 @@
                             <div class="content has-text-left">
                                 <p class="title is-5 headertext">{{item.bookname}}</p>
                                 <p>{{item.author}}</p>
-                                <div class="is-flex is-justify-content-space-between is-align-items-center">
-                                    <span class="icon">
-                                        <i class="fa-solid fa-star has-text-warning"></i>
-                                    </span>
-                                    <button class="button is-danger is-rounded" @click="addbooklist(item)">fav</button>
-                                </div>
+                                <span class="icon">
+                                    <i class="fa-solid fa-star has-text-warning"></i>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -110,7 +107,7 @@
                         <img style="width: 256px; height: 256px;"
                             src="/resources/shine-stack-of-books-and-coffee-1.png">
                     </div>
-                    <a class="button is-rounded">Chatroom</a>
+                    <a class="button is-rounded" href="booksChat.html">Chatroom</a>
                 </div>
                 <!--calendar-->
                 <div class="column is-two-quarters">
@@ -155,18 +152,10 @@
                         <div class="event-date headertext subtitle is-size-5">16 November 2022</div>
                     </div>
                     <div class="events is-flex-direction-column" id="eventbook">
-                        <!--<div class="event p-2 has-text-left">
-                            <div class="describe is-flex is-align-items-center">
-                                <span class="icon">
-                                    <i class="fas fa-circle"></i>
-                                </span>
-                                <p class="event-title headertext subtitle is-size-6">Event 1</p>
-                            </div>
-                            <div class="event-time">10:00AM - 12:00PM</div>
-                        </div>-->
                     </div>
                     <div class="add-event" style="bottom: 0;">
-                        <button class="button is-warning modal-button add-event" data-target="#modal" onclick="addeventfav()">+</button>
+                        <button class="button is-warning modal-button add-event" data-target="#modal"
+                            onclick="addeventfav()">+</button>
 
                     </div>
                 </div>

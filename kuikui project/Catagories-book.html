@@ -44,7 +44,7 @@
                     </a>
                 </div>
                 <div class="navbar-end">
-                    <a class="navbar-item" href="Profile.html">
+                    <a class="navbar-item" @click="gotoprofile('book')">
                         <img src="resources/person (1).png" alt="">
                     </a>
                 </div>
@@ -64,9 +64,9 @@
         <!--categories-->
         <div class="container">
             <div class="columns my-4">
-                <div v-for="item in genrebook"
+                <div v-for="item in typebook"
                     class="column is-one-fifth is-align-self-center is-justify-content-center is-flex">
-                    <div class="categories has-background-primary has-text-centered py-2" @click="selecttypebook(item.typename)" style="cursor: pointer;">
+                    <div class="categories has-background-primary has-text-centered py-2" @click="selecttype(item.typename, 'book')" style="cursor: pointer;">
                         <div class="icon-cate">
                             <img :src="item.imgtype">
                         </div>
@@ -78,7 +78,9 @@
 
         <!--collection-->
         <div class="container">
-            <h2 class="has-text-centered quotes title">{{topicbook}}</h2>
+            <div class="is-flex is-justify-content-space-evenly	">
+                <h2 class="has-text-centered quotes title">{{topicbook}}</h2>
+            </div>
             <div class="columns has-text-centered m-4">
                 <div v-for="item in selectbook" class="column is-one-fifth has-text-centered m-4">
                     <!--list book per each-->
@@ -97,7 +99,7 @@
                                     <span class="icon">
                                         <i class="fa-solid fa-star has-text-warning"></i>
                                     </span>
-                                    <button class="button is-danger is-rounded" @click="addbooklist(item)">fav</button>
+                                    <button class="button is-danger is-rounded" @click="addfavlist(item, 'book')">fav</button>
                                 </div>
                             </div>
                         </div>
@@ -106,7 +108,7 @@
             </div>
         </div>
     </div>
-    <script type="module" src="app.js"></script>
 </body>
-
+<script src="app.js"></script>
+<script src="script.js"></script>
 </html>
