@@ -17,10 +17,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-    <script type="module" src="app.js"></script>
     <title>Document</title>
 </head>
 
@@ -38,15 +36,15 @@
             <div class="navbar-menu">
                 <!-- name in navbar -->
                 <div class="navbar-start">
-                    <a class="navbar-item is-spaced quotes">
+                    <a class="navbar-item is-spaced quotes" href="BookPage.html">
                         Home
                     </a>
-                    <a class="navbar-item is-spaced quotes">
+                    <a class="navbar-item is-spaced quotes" href="Catagories-book.html">
                         Catagories
                     </a>
                 </div>
                 <div class="navbar-end">
-                    <a class="navbar-item">
+                    <a class="navbar-item" href="Profile.html">
                         <img src="resources/person (1).png" alt="">
                     </a>
                 </div>
@@ -77,22 +75,25 @@
         <div class="container my-5">
             <p class="has-text-centered is-size-4 m-4 quotes">Recommended Books For You</p>
             <div class="columns has-text-centered m-4">
-                <div v-for="item in count" class="column is-one-fifth">
+                <div v-for="item in showbook" class="column is-one-fifth" v-if="item.id <= 5">
                     <!--list book per each-->
                     <div class="card">
                         <div class="card-image">
                             <figure class="image is-square">
-                                <img class="px-4" src="/resources/5336587.jpg">
+                                <img class="px-4" :src="item.imagelink">
                             </figure>
                         </div>
 
                         <div class="card-content">
                             <div class="content has-text-left">
-                                <p class="title is-5 headertext">Name</p>
-                                <p>Author</p>
-                                <span class="icon">
-                                    <i class="fa-solid fa-star has-text-warning"></i>
-                                </span>
+                                <p class="title is-5 headertext">{{item.bookname}}</p>
+                                <p>{{item.author}}</p>
+                                <div class="is-flex is-justify-content-space-between is-align-items-center">
+                                    <span class="icon">
+                                        <i class="fa-solid fa-star has-text-warning"></i>
+                                    </span>
+                                    <button class="button is-danger is-rounded" @click="addbooklist(item)">fav</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -190,7 +191,9 @@
         <button class="modal-close is-large" aria-label="close" onclick="closeModal()"></button>
     </div>
     <script src="script.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <script type="module" src="app.js"></script>
 </body>
 
 </html>

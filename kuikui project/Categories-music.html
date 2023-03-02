@@ -29,22 +29,22 @@
             <div class="navbar-brand">
                 <!-- logo website... -->
                 <a class="navbar-item">
-                    <img src="resources/Component 2.png" alt="">
+                    <img src="resources/Component 4.png" alt="">
                 </a>
             </div>
 
             <div class="navbar-menu">
                 <!-- name in navbar -->
                 <div class="navbar-start">
-                    <a class="navbar-item is-spaced quotes" href="BookPage.html">
+                    <a class="navbar-item is-spaced quotes">
                         Home
                     </a>
-                    <a class="navbar-item is-spaced quotes" href="Catagories-book.html">
-                        Catagories
+                    <a class="navbar-item is-spaced quotes">
+                        Types
                     </a>
                 </div>
                 <div class="navbar-end">
-                    <a class="navbar-item" href="Profile.html">
+                    <a class="navbar-item">
                         <img src="resources/person (1).png" alt="">
                     </a>
                 </div>
@@ -54,7 +54,7 @@
         <!--search-->
         <div class="container is-flex is-justify-content-center	my-5">
             <div class="control has-icons-right">
-                <input class="input is-normal is-rounded" v-model="searchbook" type="text" placeholder="Search your book" size="100">
+                <input class="input is-normal is-rounded" v-model="searchsongs" type="text" placeholder="Search your songs" size="100">
                 <span class="icon is-small is-right">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </span>
@@ -64,13 +64,13 @@
         <!--categories-->
         <div class="container">
             <div class="columns my-4">
-                <div v-for="item in genrebook"
+                <div v-for="item in "
                     class="column is-one-fifth is-align-self-center is-justify-content-center is-flex">
                     <div class="categories has-background-primary has-text-centered py-2" @click="selecttypebook(item.typename)" style="cursor: pointer;">
                         <div class="icon-cate">
-                            <img :src="item.imgtype">
+                            <img :src="item.">
                         </div>
-                        <p class="headertext">{{item.typename}}</p>
+                        <p class="headertext">{{item.}}</p>
                     </div>
                 </div>
             </div>
@@ -80,25 +80,20 @@
         <div class="container">
             <h2 class="has-text-centered quotes title">{{topicbook}}</h2>
             <div class="columns has-text-centered m-4">
-                <div v-for="item in selectbook" class="column is-one-fifth has-text-centered m-4">
+                <div v-for="item in sh" class="column is-one-fifth has-text-centered m-4">
                     <!--list book per each-->
                     <div class="card">
                         <div class="card-image">
                             <figure class="image is-square">
-                                <img class="px-4" :src="item.imagelink">
+                                <img class="px-4" :src="item.">
                             </figure>
                         </div>
 
                         <div class="card-content">
                             <div class="content has-text-left">
-                                <p class="title is-5 headertext">{{item.bookname}}</p>
-                                <p>{{item.author}}</p>
-                                <div class="is-flex is-justify-content-space-between is-align-items-center">
-                                    <span class="icon">
-                                        <i class="fa-solid fa-star has-text-warning"></i>
-                                    </span>
-                                    <button class="button is-danger is-rounded" @click="addbooklist(item)">fav</button>
-                                </div>
+                                <p class="title is-5 headertext">{{item.}}</p>
+                                <p>{{item.}}</p>
+                                <button class="button is-danger is-rounded" @click="addmusiclist(item)">fav</button>
                             </div>
                         </div>
                     </div>

@@ -18,7 +18,7 @@
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script type = "module" src="app.js"></script>
+    <script src="script.js"></script>
     <title>Document</title>
 </head>
 
@@ -74,19 +74,19 @@
         <div class="container my-5">
             <p class="has-text-centered is-size-4 m-4 quotes">Recommended Songs For You</p>
             <div class="columns has-text-centered m-4">
-                <div v-for="item in count" class="column is-one-fifth">
+                <div v-for="item in showmusic" class="column is-one-fifth" v-if="item.id <= 5">
                     <!--list book per each-->
                     <div class="card">
                         <div class="card-image">
                             <figure class="image is-square">
-                                <img src="/resources/NCT_Dream_-_Candy.png">
+                                <img :src="item.imagelink">
                             </figure>
                         </div>
 
                         <div class="card-content">
                             <div class="content has-text-left">
-                                <p class="title is-5 headertext">Name</p>
-                                <p>Artist</p>
+                                <p class="title is-5 headertext">{{item.songname}}</p>
+                                <p>{{item.artist}}</p>
                             </div>
                         </div>
                     </div>
@@ -102,7 +102,7 @@
                     <div>
                         <img style="width: 200px; height: 250px;" src="/resources/shine-gaming-headphones-on-stand.png">
                     </div>
-                    <a class="button is-rounded">Chatroom</a>
+                    <a class="button is-rounded" href="musicChat.html">Chatroom</a>
                 </div>
                 <!--calendar-->
                 <div class="column is-three-quarters">
@@ -180,7 +180,8 @@
         </div>
     </div>
 
-    <!--vue-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script type="module" src="app.js"></script>
 
 </body>
 

@@ -186,23 +186,71 @@ const datamovie = JSON.parse(`[{
 
 const typebook = JSON.parse(`[
     {
-        "typename": Romance,
-        imgtype": "/resources/silky-heart 1.png"
+        "typename": "Romance",
+        "imgtype": "/resources/silky-heart 1.png"
     }, 
     {
-        "typename": Fantasy,
+        "typename": "Fantasy",
         "imgtype": "/resources/clip-1413.png"
     },
     {
-        "typename": ,
-        "imgtype": "/resources/clip-1413.png"
+        "typename": "Comics",
+        "imgtype": "/resources/bonbon-flying-cartoon-rocket.png"
     },
     {
-        "typename": Fantasy,
-        "imgtype": "/resources/clip-1413.png"
+        "typename": "Mystery",
+        "imgtype": "/resources/pale-magnifying-glass-1.png"
     },
     {
-        "typename": Fantasy,
-        "imgtype": "/resources/clip-1413.png"
+        "typename": "Self-Help",
+        "imgtype": "/resources/shine-glowing-light-bulb.png"
     }
-]`)
+]`);
+
+const typemusic = JSON.parse(`[
+    {
+        "typename": "Kpop",
+        "imgtype": "/resources/142422622-k-pop-korean-popular-music-style-south-korea-flag-k-pop-hand-drawn-lettering-for-banner-print-removebg-preview.png"
+    }, 
+    {
+        "typename": "Pop",
+        "imgtype": "/resources/image 8.png"
+    },
+    {
+        "typename": "HipHop",
+        "imgtype": "/resources/unnamed-removebg-preview.png"
+    },
+    {
+        "typename": "Rock",
+        "imgtype": "/resources/image 9.png"
+    },
+    {
+        "typename": "EDM",
+        "imgtype": "/resources/image 11.png"
+    }
+]`);
+
+const typemovie = JSON.parse(`[
+    {
+        "typename": "Sci-Fi",
+        "imgtype": ""
+    }, 
+    {
+        "typename": "Comedy",
+        "imgtype": ""
+    },
+    {
+        "typename": "Horror",
+        "imgtype": ""
+    },
+    {
+        "typename": "Action",
+        "imgtype": ""
+    },
+    {
+        "typename": "Drama",
+        "imgtype": ""
+    }
+]`);
+
+export {databook, datamovie, datamusic, typebook, typemusic, typemovie}
