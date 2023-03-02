@@ -18,6 +18,8 @@
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
     <script type="module" src="app.js"></script>
     <title>Document</title>
 </head>
@@ -110,7 +112,7 @@
                     <a class="button is-rounded">Chatroom</a>
                 </div>
                 <!--calendar-->
-                <div class="column is-three-quarters">
+                <div class="column is-two-quarters">
                     <div class="calendar is-flex-direction-column is-justify-content-space-between">
                         <div class="month is-flex is-align-items-center	is-justify-content-space-between">
                             <i class="fa fa-angle-left prev" onclick="prevdaymonth()"></i>
@@ -138,18 +140,57 @@
                         </div>
                         <div class="is-flex is-justify-content-center is-align-items-center">
 
-                            <input type="date" class="input" style="width: 30%;">
-                            <button class="button">Go</button>
+                            <input type="date" class="input input-date" style="width: 30%;">
+                            <button class="button" onclick="godayselect(0)">Go</button>
 
-                            <button class="button m-3">Today</button>
+                            <button class="button m-3 todaybtn" onclick="gototoday()">Today</button>
                         </div>
+                    </div>
+                </div>
+                <!--event-->
+                <div class="column">
+                    <div class="today-date has-text-centered">
+                        <div class="event-day quotes title">Wed</div>
+                        <div class="event-date headertext subtitle is-size-5">16 November 2022</div>
+                    </div>
+                    <div class="events is-flex-direction-column" id="eventbook">
+                        <!--<div class="event p-2 has-text-left">
+                            <div class="describe is-flex is-align-items-center">
+                                <span class="icon">
+                                    <i class="fas fa-circle"></i>
+                                </span>
+                                <p class="event-title headertext subtitle is-size-6">Event 1</p>
+                            </div>
+                            <div class="event-time">10:00AM - 12:00PM</div>
+                        </div>-->
+                    </div>
+                    <div class="add-event" style="bottom: 0;">
+                        <button class="button is-warning modal-button add-event" data-target="#modal" onclick="addeventfav()">+</button>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+    <div id="modal" class="modal">
+        <div class="modal-background"></div>
 
+        <div class="modal-content">
+            <div class="box">
+                <p class="quotes">Events</p>
+                <div class="py-3">
+                    <input class="input event-name" type="text" placeholder="name event">
+                </div>
+                <div class="py-3 is-align-self-center">
+                    <button class="button add-event-btn" onclick="addeventtoboard()">addevent</button>
+                </div>
+            </div>
+        </div>
+
+        <button class="modal-close is-large" aria-label="close" onclick="closeModal()"></button>
+    </div>
+    <script src="script.js"></script>
+    
 </body>
 
 </html>
