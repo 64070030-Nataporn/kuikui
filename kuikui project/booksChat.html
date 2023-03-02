@@ -1,0 +1,119 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    
+    <div class="containerChat">
+        <div class="typeChat">
+            <a href="booksChat.html">
+                <img class="imgBooks"
+                    src="https://media.discordapp.net/attachments/1079116062571892827/1079116602504659047/book-png-18.png">
+            </a>
+            <a href="musicChat.html">
+                <img class="imgMusic"
+                    src="https://media.discordapp.net/attachments/1079116062571892827/1079116698839429140/640px-Itunes-music-app-icon.png">
+            </a>
+            <a href="movieChat.html">
+                <img class="imgMovie"
+                    src="https://media.discordapp.net/attachments/1079116062571892827/1079116777511985233/online-cinema-art-movie-watching-with-popcorn-and-film-strip-cinematograph-concept-png.png?width=663&height=663">
+            </a>
+        </div>
+        <div>
+            <div class="chatting">
+                <div class="user-detail">
+                    <img class="typeChating"
+                        src="https://media.discordapp.net/attachments/1079116062571892827/1079116602504659047/book-png-18.png">
+                    <h4>Books Chat</h4>
+                    
+                </div>
+                <div id = "render" class="renderchat">
+                    <!-- <div class="chat-outcoming">
+                        <span>Loremipsumdolorsitametconsecteturadipisicing elit. Quaerat blanditiis odit nihil fugiat rerum eius eveniet sunt sed accusamus, exercitationem ipsa laborum quos velit veritatis itaque earum natus animi reprehenderit?</span>
+                        <img class="user" style="width:4%;"
+                        src="https://media.discordapp.net/attachments/1079116062571892827/1080135511118712892/image.png">
+                        
+                    </div> -->
+                    <!--<div class="chat-incoming">
+                        <img class="user" style="width:4%;"
+                            src="https://media.discordapp.net/attachments/1079116062571892827/1080135511118712892/image.png">
+                        <span>Loremipsumdolors itametconsecteturadipisicing elit. Quaerat blanditiis odit nihil fugiat
+                            rerum eius eveniet sunt sed accusamus, exercitationem ipsa laborum quos velit veritatis
+                            itaque earum natus animi reprehenderit?</span>
+                    </div> -->
+                </div>
+                <div class="sendmsg">
+                    <input id="textMsg" style="margin-top: 6%;margin-bottom: 2%; " class="form-control"
+                        placeholder="ข้อความ" type="text">
+                    <button id="btnSend" class="btn-primary">ส่ง</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+        import { getDatabase, set, push, ref, onValue } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyDxYh2hY78TtUc3Wm6o0dxxnod1a1J2My4",
+            authDomain: "chat-23e5c.firebaseapp.com",
+            databaseURL: "https://chat-23e5c-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "chat-23e5c",
+            storageBucket: "chat-23e5c.appspot.com",
+            messagingSenderId: "435533948867",
+            appId: "1:435533948867:web:81ae79221fe72245813f76",
+            measurementId: "G-HPKMND2K6E"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app)
+        const user = window.prompt('Your name:')
+        const btnSend = document.querySelector('#btnSend')
+        const txtMsg = document.querySelector('#textMsg')
+        btnSend.addEventListener('click', () => {
+            set(push(ref(db, 'Books')), {
+                username: user,
+                msg: txtMsg.value
+            })
+            txtMsg.value = '';
+        })
+
+        onValue(ref(db, 'Books'), (snapshot) => {
+            const data = snapshot.val();
+            var html = '';
+            snapshot.forEach((childSnapshot) => {
+                var key = childSnapshot.key;
+                if (data[key].username != user) {
+                    html += `<div style="color: grey;width:99%;text-align:left; padding-bottom:1%;">
+                    <h4>${data[key].username}</h4>
+                    </div>
+                    <div class="chat-incoming">
+                        <img class="user" style="width:4%;"
+                            src="https://media.discordapp.net/attachments/1079116062571892827/1080135511118712892/image.png">
+                        <span>${data[key].msg}</span>
+                    </div>`
+                } else {
+                    html += `<div style="color: grey;width:99%;text-align:right; padding-bottom:1%;">
+                    <h4>${data[key].username}</h4>
+                    </div>
+                    <div class="chat-outcoming">
+                        <span>${data[key].msg}</span>
+                        <img class="user" style="width:4%;"
+                        src="https://media.discordapp.net/attachments/1079116062571892827/1080135511118712892/image.png">
+                        
+                    </div>`
+                }
+
+            })
+            document.querySelector('#render').innerHTML = html;
+        })
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
