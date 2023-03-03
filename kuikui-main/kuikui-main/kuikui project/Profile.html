@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mitr:wght@500&family=Prompt&family=Roboto:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <!--separate profile and list-->
+    <div id="app" style="width: 100%;">
+        <div class="columns">
+            <!--left side about profile user -->
+            <div class="column is-one-quarter has-background-light">
+                <div class="has-text-centered is-align-self-center p-3">
+                    <img class="profileimg" src="resources/profile-user.jpg">
+                    <p class="title is-4 headertext mt-3">Inumaki</p>
+                    <p class="textsmall has-text-left">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero,
+                        praesentium. Quisquam nisi quibusdam ex rem! Dolor, fugit dignissimos vero maxime earum
+                        veritatis harum autem explicabo repellat, nesciunt quae sit error!</p>
+                    <button class="button is-danger" onclick="gologout()">Log out</button>
+                </div>
+            </div>
+
+            <!--right side about info and list favorite-->
+            <div class="column is-three-quarter has-background-info-light">
+                <!--say hi-->
+                <p class="title is-size-1 has-text-centered">Hi Inumaki!</p>
+
+                <!--all room-->
+                <div>
+                    <p class="subtitle is-size-4 has-text-centered">Your Activities</p>
+
+                    <div class="columns">
+                        <!--book room-->
+                        <div class="column is-flex is-justify-content-center">
+                            <div class="card" style="width: 50%;">
+                                <header class="card-header">
+                                    <div class="card-header-icon">
+                                        <span class=" card-header-icon icon">
+                                            <i class="fa-solid fa-book"></i>
+                                        </span>
+                                    </div>
+                                    <p class="card-header-title">
+                                        Book-Club
+                                    </p>
+                                </header>
+                                <div class="card-image">
+                                    <figure class="image is-4by3">
+                                        <img src="/resources/Fall Reading List.jpg">
+                                    </figure>
+                                </div>
+                                <footer class="card-footer quotes">
+                                    <a href="BookPage.html" class="card-footer-item">To Book Club</a>
+                                </footer>
+                            </div>
+                        </div>
+
+                        <!--music room-->
+                        <div class="column is-flex is-justify-content-center">
+                            <div class="card" style="width: 50%;">
+                                <header class="card-header">
+                                    <div class="card-header-icon">
+                                        <span class="icon">
+                                            <i class="fa-solid fa-music"></i>
+                                        </span>
+                                    </div>
+                                    <p class="card-header-title">
+                                        Music-Club
+                                    </p>
+                                </header>
+                                <div class="card-image">
+                                    <figure class="image is-4by3">
+                                        <img src="/resources/all my pins에 있는 smth_intheway님의 핀 _ 가을 미학, 그런지 패션, 컨셉 사진.jpg">
+                                    </figure>
+                                </div>
+                                <footer class="card-footer quotes">
+                                    <a href="MusicPage.html" class="card-footer-item">To Music Club</a>
+                                </footer>
+                            </div>
+                        </div>
+
+                        <!--movie room-->
+                        <div class="column is-flex is-justify-content-center">
+                            <div class="card" style="width: 50%;">
+                                <header class="card-header">
+                                    <div class="card-header-icon">
+                                        <span class="icon">
+                                            <i class="fa-solid fa-video"></i>
+                                        </span>
+                                    </div>
+                                    <p class="card-header-title">
+                                        Movie-Club
+                                    </p>
+                                </header>
+                                <div class="card-image">
+                                    <figure class="image is-4by3">
+                                        <img src="/resources/Seattle’s Best Cheap Movie Theaters — Real Estate Gals.jpg"
+                                           >
+                                    </figure>
+                                </div>
+                                <footer class="card-footer quotes">
+                                    <a href="MoviePage.html" class="card-footer-item">To Movie Club</a>
+                                </footer>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--your list-->
+                <div class="my-5">
+                    <p class="subtitle is-size-4 has-text-centered">Your lists</p>
+                    <button class="button" @click="allmylist()">see my list</button>
+                    <div class="columns">
+                            <div v-for="item in alllist" class="column is-one-fifth">
+                                <!--list book per each-->
+                                <div class="card">
+                                    <div class="card-image">
+                                        <figure class="image is-square">
+                                            <img class="px-4" :src="item.imagelink">
+                                        </figure>
+                                    </div>
+            
+                                    <div class="card-content">
+                                        <div class="content has-text-left">
+                                            <p class="title is-5 headertext">{{item.name}}</p>
+                                            <p>{{item.from}}</p>
+                                            <span class="icon">
+                                                <i class="fa-solid fa-star has-text-warning"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
